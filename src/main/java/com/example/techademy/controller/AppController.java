@@ -7,11 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 public class AppController {
 
     private static final Logger log = LoggerFactory.getLogger(AppController.class);
@@ -19,8 +17,8 @@ public class AppController {
     @Autowired
     AppService appService;
 
-    @RequestMapping("/saveContact")
-    public void saveContact(@ModelAttribute("contact")Contact contact){
+    @PostMapping("/saveContact")
+    public void saveContact(@RequestBody Contact contact){
         appService.addContact(contact);
     }
 
@@ -28,8 +26,8 @@ public class AppController {
     public void saveFeedback(@ModelAttribute("feedback")Feedback feedback){
         appService.addFeedback(feedback);
     }
-    @RequestMapping("/getContact/{contact_id}")
-    public Contact getContact(@PathVariable Integer contact_id){
-        return appService.getContact(contact_id);
+    @GetMapping ("/getContact/{contactId}")
+    public Contact getContact(@PathVariable Integer contactId){
+        return appService.getContact(contactId);
     }
 }

@@ -18,6 +18,6 @@ public class Contact {
     private Integer user_id;
     private String name;
     private String email;
-    private Integer phone_no;
+    private String phone_no;
     private String message;
 }
