@@ -26,4 +26,8 @@ public class AppService {
     public void addFeedback(Feedback feedback){
         feedbackAccess.save(feedback);
     }
+
+    public Contact getContact(Integer contact_id){
+        return contactAccess.getById(contact_id);
+    }
 }
