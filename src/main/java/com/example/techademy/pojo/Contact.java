@@ -3,6 +3,8 @@ package com.example.techademy.pojo;
 import lombok.*;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 public class Contact {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer contact_id;
 
     private Integer user_id;
