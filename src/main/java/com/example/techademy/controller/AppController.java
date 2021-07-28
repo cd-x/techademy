@@ -30,9 +30,15 @@ public class AppController {
         return "redirect:/contact";
     }
 
+    @RequestMapping("/feedback")
+    public ModelAndView feedback(ModelAndView mv){
+        mv.setViewName("feedback");
+        return mv;
+    }
     @RequestMapping("/saveFeedback")
-    public void saveFeedback(@ModelAttribute("feedback")Feedback feedback){
+    public String saveFeedback(@ModelAttribute("feedback")Feedback feedback){
         appService.addFeedback(feedback);
+        return "redirect:/feedback";
     }
 
     @RequestMapping ("/getContact/{contactId}")
