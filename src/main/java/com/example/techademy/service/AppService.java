@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 
 @Service
 public class AppService {
@@ -23,10 +22,22 @@ public class AppService {
     }
 
     public void addContact(Contact contact){
-        contactAccess.save(contact);
+        try{
+            contactAccess.save(contact);
+            log.info("Contact successfully added");
+        }catch (Exception e){
+            log.error(e.getMessage().toString(),e);
+        }
+
     }
     public void addFeedback(Feedback feedback){
-        feedbackAccess.save(feedback);
+        try {
+            feedbackAccess.save(feedback);
+            log.info("Feedback added successfully.");
+        }catch (Exception e){
+            log.error(e.getMessage().toString(),e);
+        }
+
     }
 
     public Contact getContact(Integer contact_id){
